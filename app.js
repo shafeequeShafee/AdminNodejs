@@ -7,7 +7,8 @@ const url='mongodb://localhost/SfqDBex';
 const cors = require('cors')
 
 const {users}=require('./user/data')
-
+const {authUser, authRole}=require('./auth/basicAuth')
+const {ROLE}= require("./user/data")
 
 
 app.use(cors())  
@@ -35,7 +36,7 @@ app.get('/dashboard',(req,res)=>{
     res.send('DashBoardPage')
 })
 
-app.get('/admin',(req,res)=>{
+app.get('/admin',authUser,authRole(ROLE.ADMIN),(req,res)=>{
     res.send('AdminPage')
 })
 
