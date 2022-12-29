@@ -5,6 +5,9 @@ const { authUser } = require('../auth/basicAuth')
 const { canViewProject, canDeleteProject, scopedProjects } = require('../permissions/projects')
 
 
+///// super admin athyam thennae njammallu Db yil set cheyyum , pinnae bakki ellam super 
+//adminannu set cheyunnath
+
 router.get('/', authUser, (req, res) => {
   res.json(scopedProjects(req.user, projects))
 })
